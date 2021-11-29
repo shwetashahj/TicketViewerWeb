@@ -57,7 +57,7 @@ export const Tickets = () => {
                 <th scope="col">SUBJECT</th>
                 <th scope="col">PROIRITY</th>
                 <th scope="col">STATUS</th>
-                <th scope="col">CREATED DATED</th>
+                <th scope="col">CREATED DATE</th>
             </tr>
             </thead>
             <tbody>

@@ -1,12 +1,12 @@
 import React,{useState,useEffect} from 'react';
 import { LoadingSpinner } from "./LoadingSpinner";
 import { useLocation } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
 
 
 export const TicketDetails = () => {
 
-   
+    const navigate = useNavigate();
     const location = useLocation();
     const id = location.state.ticketId;
     const [ticket,setTicket] = useState({});
@@ -40,6 +40,9 @@ export const TicketDetails = () => {
     return(
         isLoading ? <LoadingSpinner/> :
         <div style={{display:"flex", flexDirection:"column"}}>
+            <div style={{display:'flex', flexDirection:"row-reverse"}}>
+                <button type="button" class="btn-close btn-lg" aria-label="Close" onClick={() => navigate(-1)}></button>
+            </div>
              <h4>Ticket Details</h4>
              <table  className = "table header-fixed" style={{width:"1000px"}}>
                 <thead>

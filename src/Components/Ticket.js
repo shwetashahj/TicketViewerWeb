@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 
 export const Ticket = ({ticket}) => {
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     return (
-        <tr className = "cursor-pointer" onClick={() => history('TicketDetails',{state:{ticketId:ticket.id}})}> 
+        <tr className = "cursor-pointer" onClick={() => navigate('TicketDetails',{state:{ticketId:ticket.id}})}> 
             <th scope="row">{ticket.id}</th>
             <td>{ticket.subject !== null ?ticket.subject:"-"}</td>
             <td>{ticket.priority !== null ?ticket.priority:"-"}</td>
