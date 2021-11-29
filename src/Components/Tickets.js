@@ -2,6 +2,7 @@ import { Ticket } from "./Ticket";
 import Pagination from "react-js-pagination";
 import React,{useState,useEffect} from 'react';
 import { LoadingSpinner } from "./LoadingSpinner";
+import { ErrorPage } from "./ErrorPage";
 
 
 export const Tickets = () => {
@@ -20,7 +21,8 @@ export const Tickets = () => {
     getTickets()
   }, [])
 
-  const fetchTasks = async (page) => {
+  const fetchTasks = async (page=1, showLoading=true) => {
+    setIsLoading(showLoading);
     fetch(`http://localhost:8080/getTickets?page=${page}&per_page=${perPage}`).then((response) => {
           if(response.ok) return response.json();
           throw new Error('something went wrong');
@@ -36,12 +38,12 @@ export const Tickets = () => {
         });
   }
   
-  if(error) return <h1>{error}</h1>
+  if(error) return <ErrorPage retryCallback={ fetchTasks }/>
 
   const handlePageChange = async(pageNumber) => {
     console.log(`active page is ${pageNumber}`);
     setCurrentPage(pageNumber)
-    fetchTasks(pageNumber)
+    fetchTasks(pageNumber, false)
   }
 
   return (
