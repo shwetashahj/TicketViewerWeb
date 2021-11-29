@@ -10,7 +10,7 @@ const url = 'http://localhost:8080/getTickets?page={page}';
 export default function App(){
   
   return (
-  <div className="container-fluid">
+  <div className="container-fluid" style={{height:"100%"}}>
     <div style={{height: '60px'}}>
       <Header/>
     </div>
